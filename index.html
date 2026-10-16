@@ -1,0 +1,144 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b64;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px #cccccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #243b64;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #edf2fa;
+        }
+
+        tr:hover {
+            background-color: #dce8ff;
+        }
+
+        .total {
+            margin-top: 20px;
+            text-align: right;
+            font-weight: bold;
+            color: #243b64;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Management Application</h1>
+
+    <div class="container">
+        <h2>Student Details</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable"></tbody>
+        </table>
+
+        <div class="total" id="totalStudents"></div>
+    </div>
+
+    <script>
+        // Student data in JSON format
+        const studentsJSON = `[
+            {
+                "id": "2500030056",
+                "name": "Pranitha",
+                "course": "Front End",
+                "marks": 75
+            },
+            {
+                "id": "2500030193",
+                "name": "Dhanushka",
+                "course": "Java Script",
+                "marks": 85
+            },
+            {
+                "id": "2500030047",
+                "name": "Nikhila",
+                "course": "IoT",
+                "marks": 95
+            },
+            {
+                "id": "2500030218",
+                "name": "Priya",
+                "course": "Mathematics",
+                "marks": 80
+            }
+        ]`;
+
+        // Convert JSON string into JavaScript objects
+        const students = JSON.parse(studentsJSON);
+
+        // Display student details in the table
+        const table = document.getElementById("studentTable");
+
+        students.forEach(function(student) {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${student.id}</td>
+                <td>${student.name}</td>
+                <td>${student.course}</td>
+                <td>${student.marks}</td>
+            `;
+
+            table.appendChild(row);
+        });
+
+        // Display total number of students
+        document.getElementById("totalStudents").textContent =
+            "Total Students: " + students.length;
+    </script>
+
+</body>
+</html>
+```
